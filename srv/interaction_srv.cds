@@ -3,9 +3,12 @@ using {sap} from '@sap/cds-common-content';
 
 service CatalogService {
 
+    @requires           : 'authenticated-user'
+    @cds.redirection.target
     @odata.draft.enabled: true
     entity Interactions_Header as projection on interactions.Headers;
 
+    @requires: 'Admin'
     entity Interactions_Items  as projection on interactions.Items;
 
     @readonly
